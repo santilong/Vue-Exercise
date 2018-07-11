@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.name }} -- {{ todo.age }}
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                    {name:'santi',age:34},
+                    {name:'muci',age:31},
+                    {name:'wangyang',age:33},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

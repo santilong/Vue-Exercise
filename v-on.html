@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        本场比赛得分 {{ score1 }}
+        <p>
+            <button v-on:click="add">加分</button>
+            <button v-on:click="reduce">减分</button>
+            <br>
+            <input type="text" v-on:keyup.enter="onenter" v-model="score2">
+
+        </p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                score1: 0,
+                score2: 1
+            },
+            methods:{
+                add:function () {
+                    this.score1++
+                },
+                reduce:function () {
+                    this.score1--
+                },
+                onenter:function () {
+                    this.score1 = this.score1 + parseInt(this.score2) //如果直接用this.score2，有个bug，this.score2会被转换为字符串，因此需要用parseInt()转化为数字
+                }
+            }
+        })
+    </script>
+</body>
+</html>
