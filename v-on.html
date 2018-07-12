@@ -11,9 +11,8 @@
         <p>
             <button v-on:click="add">加分</button>
             <button v-on:click="reduce">减分</button>
-            <br>
-            <input type="text" v-on:keyup.enter="onenter" v-model="score2">
-
+            <hr>
+            <input type="text" @keyup.enter="onenter" v-model="score2">
         </p>
     </div>
 

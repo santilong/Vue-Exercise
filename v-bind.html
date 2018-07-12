@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <style>
+        .classA {
+            color: red;
+        }
+        .classB {
+            font-size: 30px;
+        }
+        .classC {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>img标签src<img v-bind:src="picurl" width="200px;"></p><hr>
+        <p>a标签href<a :href="weburl">1024</a></p><hr>
+        <p><div :class="className">绑定class</div></p><hr>
+        <p><div :class="{classA:isOk}">绑定class中的判断(被isOk控制)</div></p><hr>
+        <p><div :class="[classA,classB]">绑定class中的数组</div></p><hr>
+        <p><div :class="isOk?classA:classC">绑定class中的三元表达式(被isOk控制)</div></p><hr>
+        <p><input type="checkbox" id="en" v-model="isOk">isOk控制</p><hr>
+        <p><div :style="{color:red,fontSize:font}">绑定style</div></p><hr>  <!--font-size要写成fontSize，这是Vue的特点-->
+        <p><div :style="styleObj">绑定style</div></p><hr>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                picurl: 'https://cn.vuejs.org/images/bmqb.png',
+                weburl: 'http://n2.lufi99.info/',
+                className:'classA',
+                isOk: false,
+                classA: 'classA',
+                classB: 'classB',
+                classC: 'classC',
+                red:'yellow',
+                font:'20px;',
+                styleObj: {
+                    color: 'orange',
+                    fontSize: '50px' //font-size要写成fontSize，这是Vue的特点
+                }
+            }
+        })
+    </script>
+</body>
+</html>

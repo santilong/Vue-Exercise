@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <p>v-model<input type="text" v-model="message"></p>
+        <p>v-model.lazy<input type="text" v-model.lazy="message"></p>
+        <p>v-model.number<input type="text" v-model.number="message"></p>
+        <p>v-model.trim<input type="text" v-model.trim="message"></p>
+        <hr>
+        <p>v-model-textarea<textarea v-model="message"></textarea></p>
+        <hr>
+        <p>v-model-checkbox<input type="checkbox" id="cb" v-model="isTrue"> {{isTrue}} </p>
+        <hr>
+        <p>v-model-checkbox<input type="checkbox" id="cb1" v-model="list" value="篮球">篮球  </p>
+        <p>v-model-checkbox<input type="checkbox" id="cb2" v-model="list" value="足球">足球  </p>
+        <p>v-model-checkbox<input type="checkbox" id="cb3" v-model="list" value="棒球">棒球 </p>
+        <p>v-model-checkbox<input type="checkbox" id="cb4" v-model="list" value="高尔夫">高尔夫  </p>
+        <p>{{list}}</p>
+        <hr>
+        <p>v-model-radio<input type="radio" id="cb5" v-model="sex" value="男">男<input type="radio" id="cb6" v-model="sex" value="女">女  </p>
+        <p>你选择的性别为：{{sex}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 666,
+                isTrue: true,
+                list : [],
+                sex : '男'
+            }
+        })
+    </script>
+</body>
+</html>
