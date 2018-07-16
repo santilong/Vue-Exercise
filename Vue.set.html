@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ count }}</div >
+        <div v-for="item in arr">
+            {{ item }}
+        </div >
+    </div>
+    <button onclick="add()">ADD</button>
+    <script>
+        function add() {
+            //Vue.set(outData,'count',5);  //方式1：Vue.set();
+            //outData.count++;  //方式二；
+            //app.count++; //方式三
+            //但是，如果outData中包含数据，app无法通过索引绑定doc的属组数据，所以会无效，如下：
+            //app.arr[1] = '121';  //无效
+            //所以可以通过Vue.set()进行；
+            Vue.set(app.arr,1,'666')   //参数为：属组、索引、新值
+        }
+        var outData = {
+            count: 1,
+            arr: ['aaa','bbb','ccc']
+        };
+        var app = new Vue({
+            el: '#app',
+            data: outData,
+            methods: {
+                add:function () {
+                    this.count++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

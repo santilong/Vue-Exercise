@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>今日温度：{{tmp}}</p>
+        <p>穿衣建议：{{chuanyi}}</p>
+        <button @click="add(5)">升高温度</button><button @click="reduce(5)">降低温度</button>
+    </div>
+    <script>
+        var wendu_arr = ["可以裸奔了","快去炕上啪啪啪"];
+        var app = new Vue({
+            el:'#app',
+            data:{
+                tmp:10,
+                chuanyi:'夹克长裙'
+            },
+            methods:{
+                add:function (arg) {
+                    this.tmp+=arg
+                },
+                reduce:function (arg) {
+                    this.tmp-=arg
+                }
+            }
+        });
+        app.$watch('tmp',function (newVal,oldVal) {
+            if (newVal>=26) {
+                this.chuanyi = wendu_arr[0]
+            }else{
+                this.chuanyi = wendu_arr[1]
+            }
+        })
+    </script>
+</body>
+</html>

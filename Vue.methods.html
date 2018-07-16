@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{num}}</p>
+        <button @click="add(2)">ADD</button>
+        <p><btn @click.native="add(5)"></btn></p>
+        <p><button onclick="app.add(10)">构造器外调用构造器内add方法</button></p>
+    </div>
+    <script>
+        var btn = {  //创建组件
+            template:'<button>native ADD</button>'
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function (arg) {
+                    if (arg!=''){
+                        this.num +=arg
+                    }else {
+                        this.num++
+                    }
+                }
+            },
+            components:{
+                'btn':btn
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <santi></santi>
+        <panda></panda>
+    </div>
+    <script>
+        Vue.component('santi',{   //全局组件的定义，全局表示可以在任意vue对象中使用，但是必须是在vue对象中；
+            template: `<div style="color:red;">我是全局santi组件</div>`,
+        });
+        var app = new Vue({
+            el: '#app',
+            components: {   //局部组件的定义
+                "panda":{
+                    template: `<div style="color:green;">我是局部的panda组件</div>`,
+                }
+            }
+        })
+    </script>
+</body>
+</html>

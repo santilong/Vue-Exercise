@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{message}}</div>
+        <template id="t2">   <!--方式二-->
+            <h2 style="color:green">我是template模板</h2>
+        </template>
+        <script type="x-template" id="t3"> <!--方式三,type="x-template" 是Vue特定的-->
+            <h2 style="color:yellow">我是script模板</h2>
+        </script>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            },
+            //template: `<h2 style="color:red">我是选项模板</h2>`  //方式一，短模板使用
+            //template:"#t2",   //方式二
+            template:"#t3"   //方式二
+        })
+    </script>
+</body>
+</html>

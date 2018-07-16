@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <panda></panda>
+    </div>
+    <script>
+        var city2 = {
+            template:`<p style="color:green;">sichuan in China</p>`
+        };
+        var panda2 = {
+            template: `<div style="color:red;">Panda from China!<city></city></div>`,
+            components:{
+                "city":city2
+            }
+        };
+        var app = new Vue({
+            el: '#app',
+            components:{
+                "panda": panda2
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="author666"></div>
+    <author></author>
+    <script>
+        var authorUrl = Vue.extend({
+            template: "<p><a v-bind:href='authorUrl'>{{ authorName }}</a></p>",  //扩展需要模板
+            data: function () {  //此处的数据需要通过函数return的
+                return {
+                    authorName: 'Santi',
+                    authorUrl: 'http://ipm.tap4fun.com:8998/login.html'
+                }
+            }
+        });
+        new authorUrl().$mount('#author666');  //此处挂载和jquery的选择器一样；
+        new authorUrl().$mount('author');
+
+    </script>
+</body>
+</html>

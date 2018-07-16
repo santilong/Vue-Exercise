@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ newPrice}}
+        <ol>
+            <li v-for="item in reversNew">{{item.title}}-{{item.date}}</li>
+        </ol>
+    </div>
+
+    <script>
+        var newsList = [
+            {title:'你好',date:'2014/6/03'},
+            {title:'再见',date:'2015/12/30'},
+            {title:'晚安',date:'2013/1/11'},
+            {title:'午安',date:'2017/3/31'},
+            {title:'早安',date:'2016/9/10'}
+        ];
+        var app = new Vue({
+            el:'#app',
+            data:{
+                price:100,
+                newsList:newsList
+            },
+            computed:{
+                newPrice:function () {
+                    return "￥" + this.price + "元"
+                },
+                reversNew:function () {
+                    return this.newsList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

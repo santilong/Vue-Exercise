@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <component v-bind:is="who"></component>
+        <button @click="changecomponent">changecomponent</button>
+    </div>
+    <script>
+        var componentA = {
+            template:`<div style="color:red;">I'm componentA.</div>`
+        };
+        var componentB = {
+            template:`<div style="color:green;">I'm componentB.</div>`
+        };
+        var componentC = {
+            template:`<div style="color:pink;">I'm componentC.</div>`
+        };
+        var app = new Vue({
+            el: '#app',
+            components: {   //局部组件的定义
+                "componentA":componentA,
+                "componentB":componentB,
+                "componentC":componentC
+            },
+            data:{
+                who:"componentC"
+            },
+            methods:{
+                changecomponent:function () {
+                    if(this.who =='componentC') {
+                        this.who="componentB"
+                    }else if(this.who=="componentB") {
+                        this.who="componentA"
+                    }else{
+                        this.who="componentC"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-santi="color">{{ num }}</div >
+        <p><button @click="add">ADD</button></p>
+        <button onclick="unbind()">解绑</button>  <!--因为要解绑，所以不能使用vue的指令，要使用js原生-->
+    </div>
+    <script>
+        function unbind() {
+            app.$destroy()  //对app进行解绑，这是Vue提供给我们的一个销毁函数；
+        }
+        Vue.directive("santi",{
+            bind:function (el,binding) {
+                el.style='color:' + binding.value;
+                console.log('1 - bind');
+            },
+            inserted:function () {
+                console.log('2 - inserted');
+            },
+            update:function () {
+                console.log('3 - update');
+            },
+            componentUpdated:function () {
+                console.log('4 - componentUpdated');
+            },
+            unbind:function () {
+                console.log('5 - unbind');
+            }
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: '10',
+                color:'red'
+            },
+            methods: {
+                add:function () {
+                    this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
