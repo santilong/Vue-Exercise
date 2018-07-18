@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div id="app">
+        <santitmp>  <!--自定义组件-->
+            <span slot="blogUrl">{{userinfo.blogUrl}}</span>
+            <span slot="blogOwen">{{userinfo.blogOwen}}</span>
+            <span slot="skill">{{userinfo.skill}}</span>
+        </santitmp>
+    </div>
+    <template id="tep">
+        <div>
+            <p>博客地址：<slot name="blogUrl"></slot></p>
+            <p>网名：<slot name="blogOwen"></slot></p>
+            <p>技术类型：<slot name="skill"></slot></p>
+        </div>
+    </template>
+    <script>
+        var santiTemp = {
+            template: "#tep"
+        };
+        var app = new Vue({
+            el: '#app',
+            data:{
+                userinfo:{
+                    blogUrl:'121.com',
+                    blogOwen:'Santi',
+                    skill:'大保健'
+                }
+            },
+            components:{
+                "santitmp":santiTemp
+            }
+        });
+    </script>
+</body>
+</html>

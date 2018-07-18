@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data:{
+                message:'hello world'
+            },
+            mounted:function () {  //Vue和Jquery.js一起使用;
+                $('#app').html('kiss my ass world')
+            },
+            methods:{
+                add:function () {
+                    console.log('构造器内的add方法')
+                }
+            }
+        });
+        app.add();  //二、实例调用自定义方法
+    </script>
+</body>
+</html>

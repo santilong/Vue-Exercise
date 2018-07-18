@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+        <p><button @click="add">ADD</button></p>
+    </div>
+    <p><button onclick="app.add()">我是外部ADD，调用构造器内的add方法</button></p>
+    <p><button onclick="reduce()">Reduce</button></p>
+    <p><button onclick="reduceOnce()">ReduceOnce</button></p>
+    <p><button onclick="off()">off</button></p>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num: 1
+            },
+            methods:{
+                add:function () {
+                    this.num++
+                }
+            }
+        });
+        app.$on('reduce',function () {
+            console.log('执行了reduce方法');
+            this.num--
+        });
+        app.$once('reduceOnce',function () {   //只执行一次；
+            console.log('执行了reduceOnce方法');
+            this.num--
+        });
+        function reduce() {
+            app.$emit('reduce')  //通过emit方法进行外部调用；
+        }
+        function reduceOnce() {
+            app.$emit('reduceOnce')
+        }
+        function off() {
+            app.$off('reduce')   //关闭事件；
+        }
+    </script>
+</body>
+</html>

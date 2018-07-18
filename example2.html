@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <p><button onclick="destroy()">销毁</button>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="tick()">Tick</button></p>
+    <script>
+        var laosiji = Vue.extend({
+            template:"<p><input v-model='name'></p>",
+            data:function () {
+                return {
+                    name: "zhuzhuxia"
+                }
+            },
+            mounted:function () {
+                console.log('mounted被传创建')
+            },
+            destroyed:function () {
+                console.log('销毁之后')
+            },
+            updated:function () {
+                console.log('更新之后',this.name)
+            }
+        });
+        var vm = new laosiji().$mount('#app');
+        function destroy() {
+            vm.$destroy()
+        }
+        function reload() {
+            vm.$forceUpdate()
+        }
+        function tick() {
+            vm.name = '鸡蛋侠';
+            vm.$nextTick(function () {
+                console.log('$nextTick()被执行')
+            })
+        }
+    </script>
+</body>
+</html>
